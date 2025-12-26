@@ -30,6 +30,18 @@ const oneButton = document.getElementById("btn1"),
       idk = document.getElementById("idk"),
       nice = document.getElementById("nice")
 
+const colorButton = [oneButton, twoButton, threeButton, fourButton]
+
+function selectColor(btn, w, h) {
+    colorButton.forEach(b => b.classList.remove("chushpan"))
+
+    btn.classList.add("chushpan")
+
+    good = w
+    bad = h
+    a = true
+}
+
 let good = "",
     bad = "",
     vals = 0,
@@ -82,73 +94,59 @@ threeBox.addEventListener("change", function() {
 })
     
 oneInput.addEventListener("input", function() {
-    vals = 0
-    good = oneInput.value + "px"
-    if(oneInput.value > 300) {
-        vals += 70
-    } else if(oneInput.value > 500) {
-        vals += 100
-    } else if(oneInput.value > 700) {
-        vals += 130
-    } else if(oneInput.value > 100) {
-        vals += 40
+    good = oneInput.value + "%"
+    console.log(oneInput.value)
+    if (oneInput.value > 70) {
+        vals = 80
+    } else if (oneInput.value > 50) {
+        vals = 65
+    } else if (oneInput.value > 30) {
+        vals = 50
+    } else if (oneInput.value > 10) {
+        vals = 35
     }
+    console.log(vals)
+    last += vals
 })
 
 twoInput.addEventListener("input", function() {
-    bad = twoInput.value + "px"
+    bad = twoInput.value + "%"
+    console.log(twoInput.value)
+    if (twoInput.value > 70) {
+        vals = 80
+    } else if (twoInput.value > 50) {
+        vals = 65
+    } else if (twoInput.value > 30) {
+        vals = 50
+    } else if (twoInput.value > 10) {
+        vals = 35
+    }
+    last += vals
 })
 
 fullInput.addEventListener("click", function() {
+    
     picture.style.width = good
     picture.style.height = bad
-    if(last > 0) {
-        last = 0
-        return
-    } else if(last == 0) {
-        last += vals
-    }
+    idk.textContent = last
 })
 
 oneButton.addEventListener("click", function() {
-    vals = 0
-    good = "50%"
-    bad = "50%"
-    vals += 70
-    a = true
+    selectColor(oneButton, "50%", "50%")
 })
 
 twoButton.addEventListener("click", function() {
-    vals = 0
-    good = "50%"
-    bad = "65%"
-    vals += 100
-    a = true
+    selectColor(twoButton, "50%", "65%")
 })
 
 threeButton.addEventListener("click", function() {
-    vals = 0
-    good = "65%"
-    bad = "85%"
-    vals += 130
-    a = true
+    selectColor(threeButton, "65%", "85%")
 })
 
 fourButton.addEventListener("click", function() {
-    vals = 0
-    good = "65%"
-    bad = "95%"
-    vals += 160
-    a = true
+    selectColor(fourButton, "65%", "95%")
 })
 
 fullButton.addEventListener("click", function() {
-    last = 0
-    picture.style.width = good
-    picture.style.height = bad
-    last += vals
-    idk.innerHTML = last
-    if(a) {
-        block.style.display = "flex"
-    }
+    block.style.display = "flex"
 })

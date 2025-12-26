@@ -204,6 +204,11 @@ header {
     transform: translateY(-2px);
 }
 
+.chushpan {
+    background-color: #4c7792;
+    color: #fff;
+}
+
 .push-size,
 .pidrahuv {
     font-size: 18px;
