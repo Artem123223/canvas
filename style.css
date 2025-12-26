@@ -228,9 +228,19 @@ header {
     transform: translateY(-2px);
 }
 
+.bq {
+    display: flex;
+}
+
 .xy {
     display: flex;
     gap: 20px;
+}
+
+.button-for,
+.xy,
+.bq {
+    display: none;
 }
 
 .xy-text {
@@ -329,8 +339,8 @@ hr {
     position: absolute;
     width: 5px;
     height: 10px;
-    top: 40%;
-    left: 50%;
+    top: 44%;
+    left: 52.5%;
     transform: translate(-50%, -50%) rotate(45deg);
     border: none;
     border-right: 2px solid #4c7792;
@@ -420,7 +430,7 @@ hr {
     position: absolute;
     font-size: 24px;
     top: 35%;
-    right: -55%;
+    left: 100%;
 }
 
 .cg {
@@ -569,7 +579,6 @@ footer {
     }
 
     .bq {
-        display: flex;
         flex-direction: column;
     }
 
@@ -764,7 +773,6 @@ footer {
     }
 
     .bq {
-        display: flex;
         flex-direction: row;
         justify-content: space-between;
     }

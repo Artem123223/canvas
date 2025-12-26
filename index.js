@@ -26,6 +26,7 @@ const oneButton = document.getElementById("btn1"),
       oneBox = document.getElementById("8"),
       twoBox = document.getElementById("9"),
       threeBox = document.getElementById("10"),
+      block = document.querySelector(".button-for"),
       idk = document.getElementById("idk"),
       nice = document.getElementById("nice")
 
@@ -35,7 +36,8 @@ let good = "",
     last = 0,
     amount = 0,
     am1 = 0,
-    am2 = 0
+    am2 = 0,
+    a = false
 
 oneBox.addEventListener("change", function() {
     if(oneBox.checked) {
@@ -48,6 +50,7 @@ oneBox.addEventListener("change", function() {
             amount -= 1
         }
     }
+    idk.innerHTML = last
 })
 
 twoBox.addEventListener("change", function() {
@@ -61,6 +64,7 @@ twoBox.addEventListener("change", function() {
             am1 -= 1
         }
     }
+    idk.innerHTML = last
 })
 
 threeBox.addEventListener("change", function() {
@@ -74,6 +78,7 @@ threeBox.addEventListener("change", function() {
             am2 -= 1
         }
     }
+    idk.innerHTML = last
 })
     
 oneInput.addEventListener("input", function() {
@@ -110,6 +115,7 @@ oneButton.addEventListener("click", function() {
     good = "50%"
     bad = "50%"
     vals += 70
+    a = true
 })
 
 twoButton.addEventListener("click", function() {
@@ -117,6 +123,7 @@ twoButton.addEventListener("click", function() {
     good = "50%"
     bad = "65%"
     vals += 100
+    a = true
 })
 
 threeButton.addEventListener("click", function() {
@@ -124,6 +131,7 @@ threeButton.addEventListener("click", function() {
     good = "65%"
     bad = "85%"
     vals += 130
+    a = true
 })
 
 fourButton.addEventListener("click", function() {
@@ -131,6 +139,7 @@ fourButton.addEventListener("click", function() {
     good = "65%"
     bad = "95%"
     vals += 160
+    a = true
 })
 
 fullButton.addEventListener("click", function() {
@@ -138,8 +147,8 @@ fullButton.addEventListener("click", function() {
     picture.style.width = good
     picture.style.height = bad
     last += vals
-})
-
-nice.addEventListener("click", function() {
     idk.innerHTML = last
+    if(a) {
+        block.style.display = "flex"
+    }
 })
