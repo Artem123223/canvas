@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, userscalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Canvas</title>
+</head>
+<body>
+    <header>
+        <nav class="justify-between align-items">
+            <div class="logo align-items">
+                <a href="index.html"><img src="img/logo.svg" alt="логотип"></a>
+                <a href="index.html" class="KanvasName">Kanvas</a>
+            </div>
+            <div class="align-items jur">
+                <div class="dark-bgc"></div>
+                <div class="burger">
+                    <span class="bord b1"></span>
+                    <span class="bord b2"></span>
+                    <span class="bord b3"></span>
+                </div>
+                <div class="whats align-items aha">
+                    <p><a href="#" class="up-text">Галерея</a></p>
+                    <p><a href="#" class="up-text">Про нас</a></p>
+                    <p class="p-up"><a href="#" class="uptext-green">замовити дзвінок</a></p>
+                    <p class="cancel">x</p>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="constructor">
+            <div class="constructor-paint">
+                <img class="stend" src="img/molbert.png" alt="стенд">
+                <div class="picture"></div>
+            </div>
+            <div class="constructor-controls">
+                <nav class="controls">
+                    <form method="post" action="index.html">
+                        <h2 class="h2-control">Виберіть розмір</h2>
+                        <div class="bro">
+                            <button type="button" class="button-size" id="btn1">30х30</button>
+                            <button type="button" class="button-size" id="btn2">30х90</button>
+                            <button type="button" class="button-size sds" id="btn3">90х120</button>
+                            <button type="button" class="button-size sds" id="btn4">90х150</button>
+                            <button type="button" class="push-size" id="btn5">задати розмір</button>
+                        </div>
+                        <div class="xy bq">
+                            <div class="xy bx">
+                                <div>
+                                    <p class="xy-text">ширина</p>
+                                    <input type="text" class="inpit" id="in1">
+                                </div>
+                                <div class="abaudna" style="margin-left: 30px;">
+                                    <p class="xy-text">висота</p>
+                                    <input type="text" class="inpit" id="in2">
+                                </div>
+                            </div>
+                            <p class="p-button">
+                                <button type="button" class="pidrahuv" id="in3">підрахувати</button>
+                            </p>
+                        </div>
+                        <hr>
+                        <h2 class="h2-control kl" style="margin-bottom: 30px;">Додаткові опції</h2>
+                        <div>
+                            <div class="joker">
+                                <div class="align-items gup">
+                                    <input type="checkbox" class="check" id="8">
+                                    <p class="box-text">дорожче полотно</p>
+                                </div>
+                                <p class="value-txt">+ 35 грн</p>
+                            </div>
+                            <div class="joker">
+                                <div class="align-items gup">
+                                    <input type="checkbox" class="check" id="9">
+                                    <p class="box-text">з рамкою</p>
+                                </div>
+                                <p class="value-txt">+ 10 грн</p>
+                            </div>
+                            <div class="joker">
+                                <div class="align-items gup">
+                                    <input type="checkbox" class="check" id="10">
+                                    <p class="box-text">з доставкою (Нова Пошта)</p>
+                                </div>
+                                <p class="value-txt">+ 40 грн</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="lastry justify-between">
+                            <button type="button" class="submit" id="nice">придбати</button>
+                            <div class="align-items suma-text">
+                                <p class="suma">Загальна сума:</p>
+                                <div class="flex">
+                                    <p class="cina cg" id="idk">345</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </nav>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </main>
+    <footer>
+        <p class="footer-text">© Kanvas. Всі права захищені</p>
+    </footer>
+</body>
+</html>
