@@ -32,119 +32,66 @@ const oneButton = document.getElementById("btn1"),
 
 const colorButton = [oneButton, twoButton, threeButton, fourButton]
 
-function selectColor(btn, w, h) {
-    colorButton.forEach(b => b.classList.remove("chushpan"))
+let optionPrice = 0,
+    fullPrice = 0
 
+function plusPrice() {
+    idk.textContent = fullPrice + optionPrice
+}
+
+function selectColor(btn, w, h, price) {
+    colorButton.forEach(b => b.classList.remove("chushpan"))
     btn.classList.add("chushpan")
 
     good = w
     bad = h
-    a = true
+
+    fullPrice = price
+    plusPrice()
 }
 
-let good = "",
-    bad = "",
-    vals = 0,
-    last = 0,
-    amount = 0,
-    am1 = 0,
-    am2 = 0,
-    a = false
-
-oneBox.addEventListener("change", function() {
-    if(oneBox.checked) {
-        last += 35
-        amount += 1
-    } else if(!oneBox.checked) {
-        last += 0
-        if(amount == 1) {
-            last -= 35
-            amount -= 1
-        }
-    }
-    idk.innerHTML = last
-})
-
-twoBox.addEventListener("change", function() {
-    if(twoBox.checked) {
-        last += 10
-        am1 += 1
-    } else if(!twoBox.checked) {
-        last += 0
-        if(am1 == 1) {
-            last -= 10
-            am1 -= 1
-        }
-    }
-    idk.innerHTML = last
-})
-
-threeBox.addEventListener("change", function() {
-    if(threeBox.checked) {
-        last += 40
-        am2 += 1
-    } else if(!threeBox.checked) {
-        last += 0
-        if(am2 == 1) {
-            last -= 40
-            am2 -= 1
-        }
-    }
-    idk.innerHTML = last
-})
-    
-oneInput.addEventListener("input", function() {
-    good = oneInput.value + "%"
-    console.log(oneInput.value)
-    if (oneInput.value > 70) {
-        vals = 80
-    } else if (oneInput.value > 50) {
-        vals = 65
-    } else if (oneInput.value > 30) {
-        vals = 50
-    } else if (oneInput.value > 10) {
-        vals = 35
-    }
-    console.log(vals)
-    last += vals
-})
-
-twoInput.addEventListener("input", function() {
-    bad = twoInput.value + "%"
-    console.log(twoInput.value)
-    if (twoInput.value > 70) {
-        vals = 80
-    } else if (twoInput.value > 50) {
-        vals = 65
-    } else if (twoInput.value > 30) {
-        vals = 50
-    } else if (twoInput.value > 10) {
-        vals = 35
-    }
-    last += vals
-})
-
-fullInput.addEventListener("click", function() {
-    
-    picture.style.width = good
-    picture.style.height = bad
-    idk.textContent = last
-})
-
 oneButton.addEventListener("click", function() {
-    selectColor(oneButton, "50%", "50%")
+    selectColor(oneButton, "50%", "50%", 100)
 })
 
 twoButton.addEventListener("click", function() {
-    selectColor(twoButton, "50%", "65%")
+    selectColor(twoButton, "50%", "65%", 150)
 })
 
 threeButton.addEventListener("click", function() {
-    selectColor(threeButton, "65%", "85%")
+    selectColor(threeButton, "65%", "85%", 220)
 })
 
 fourButton.addEventListener("click", function() {
-    selectColor(fourButton, "65%", "95%")
+    selectColor(fourButton, "65%", "95%", 280)
+})
+
+fullInput.addEventListener("click", function() {
+    const w = Number(oneInput.value)
+    const h = Number(twoInput.value)
+
+    if (!w || !h) return alert("Введи ширину і висоту")
+
+    picture.style.width = w + "%"
+    picture.style.height = h + "%"
+
+    fullPrice = Math.round((w * h) / 10)
+    plusPrice()
+})
+
+oneBox.addEventListener("change", function() {
+    optionPrice += oneBox.checked ? 35 : -35
+    plusPrice()
+})
+
+twoBox.addEventListener("change", function() {
+    optionPrice += twoBox.checked ? 10 : -10
+    plusPrice()
+})
+
+threeBox.addEventListener("change", function() {
+    optionPrice += threeBox.checked ? 40 : -40
+    plusPrice()
 })
 
 fullButton.addEventListener("click", function() {

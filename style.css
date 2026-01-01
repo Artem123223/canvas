@@ -985,8 +985,9 @@ footer {
 }
 
 @media screen and (min-width: 1440px) {
-    .constructor {
-        height: 100vh;
+    .constructor,
+    .constructor-paint {
+        min-height: calc(100vh - 100px - 53px);
     }
 }
 
