@@ -33,49 +33,71 @@ const oneButton = document.getElementById("btn1"),
 const colorButton = [oneButton, twoButton, threeButton, fourButton]
 
 let optionPrice = 0,
-    fullPrice = 0
+    fullPrice = 0,
+    isOpen = false
 
 function plusPrice() {
     idk.textContent = fullPrice + optionPrice
 }
 
-function selectColor(btn, w, h, price) {
+oneInput.addEventListener("input", () => {
     colorButton.forEach(b => b.classList.remove("chushpan"))
-    btn.classList.add("chushpan")
-
-    good = w
-    bad = h
-
-    fullPrice = price
-    plusPrice()
-}
+})
+twoInput.addEventListener("input", () => {
+    colorButton.forEach(b => b.classList.remove("chushpan"))
+})
 
 oneButton.addEventListener("click", function() {
-    selectColor(oneButton, "50%", "50%", 100)
+    oneInput.value = 30
+    twoInput.value = 30
+    colorButton.forEach(b => b.classList.remove("chushpan"))
+    oneButton.classList.add("chushpan")
+    fullPrice = 100
+    plusPrice()
 })
 
 twoButton.addEventListener("click", function() {
-    selectColor(twoButton, "50%", "65%", 150)
+    oneInput.value = 30
+    twoInput.value = 90
+    colorButton.forEach(b => b.classList.remove("chushpan"))
+    twoButton.classList.add("chushpan")
+    fullPrice = 150
+    plusPrice()
 })
 
 threeButton.addEventListener("click", function() {
-    selectColor(threeButton, "65%", "85%", 220)
+    oneInput.value = 90
+    twoInput.value = 120
+    colorButton.forEach(b => b.classList.remove("chushpan"))
+    threeButton.classList.add("chushpan")
+    fullPrice = 220
+    plusPrice()
 })
 
 fourButton.addEventListener("click", function() {
-    selectColor(fourButton, "65%", "95%", 280)
+    oneInput.value = 90
+    twoInput.value = 150
+    colorButton.forEach(b => b.classList.remove("chushpan"))
+    fourButton.classList.add("chushpan")
+    fullPrice = 280
+    plusPrice()
 })
 
 fullInput.addEventListener("click", function() {
-    const w = Number(oneInput.value)
-    const h = Number(twoInput.value)
+    let w = Number(oneInput.value)
+    let h = Number(twoInput.value)
 
     if (!w || !h) return alert("Введи ширину і висоту")
 
-    picture.style.width = w + "%"
-    picture.style.height = h + "%"
+    if (w > 90) w = 90
+    if (h > 150) h = 150
 
-    fullPrice = Math.round((w * h) / 10)
+    const wiDth = (w / 90) * 50
+    const heiGht = (h / 150) * 95
+
+    picture.style.width = wiDth + "%"
+    picture.style.height = heiGht + "%"
+
     plusPrice()
 })
 
@@ -95,5 +117,11 @@ threeBox.addEventListener("change", function() {
 })
 
 fullButton.addEventListener("click", function() {
-    block.style.display = "flex"
+    isOpen = !isOpen
+    if(isOpen) {
+        fullButton.textContent = "Сховати"
+    } else {
+        fullButton.textContent = "Задати розмір"
+    }
+    block.style.display = isOpen ? "flex" : "none"
 })
