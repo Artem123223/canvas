@@ -50,6 +50,10 @@ twoInput.addEventListener("input", () => {
 oneButton.addEventListener("click", function() {
     oneInput.value = 30
     twoInput.value = 30
+    w = 30
+    h = 30
+    picture.style.width = w + "%"
+    picture.style.height = h + "%"
     colorButton.forEach(b => b.classList.remove("chushpan"))
     oneButton.classList.add("chushpan")
     fullPrice = 100
@@ -59,6 +63,12 @@ oneButton.addEventListener("click", function() {
 twoButton.addEventListener("click", function() {
     oneInput.value = 30
     twoInput.value = 90
+    w = 30
+    h = 90
+    const widTh = (w / 50) * 50
+    const heigHt = (h / 50) * 30
+    picture.style.width = widTh + "%"
+    picture.style.height = heigHt + "%"
     colorButton.forEach(b => b.classList.remove("chushpan"))
     twoButton.classList.add("chushpan")
     fullPrice = 150
@@ -68,6 +78,12 @@ twoButton.addEventListener("click", function() {
 threeButton.addEventListener("click", function() {
     oneInput.value = 90
     twoInput.value = 120
+    w = 90
+    h = 120
+    const widTh = (w / 50) * 40
+    const heigHt = (h / 50) * 31
+    picture.style.width = widTh + "%"
+    picture.style.height = heigHt + "%"
     colorButton.forEach(b => b.classList.remove("chushpan"))
     threeButton.classList.add("chushpan")
     fullPrice = 220
@@ -77,6 +93,12 @@ threeButton.addEventListener("click", function() {
 fourButton.addEventListener("click", function() {
     oneInput.value = 90
     twoInput.value = 150
+    w = 90
+    h = 150
+    const widTh = (w / 50) * 40
+    const heigHt = (h / 50) * 31
+    picture.style.width = widTh + "%"
+    picture.style.height = heigHt + "%"
     colorButton.forEach(b => b.classList.remove("chushpan"))
     fourButton.classList.add("chushpan")
     fullPrice = 280
@@ -88,9 +110,8 @@ fullInput.addEventListener("click", function() {
     let h = Number(twoInput.value)
 
     if (!w || !h) return alert("Введи ширину і висоту")
-
-    if (w > 90) w = 90
-    if (h > 150) h = 150
+    if (w < 0 || h < 0) return alert("Впишіть не мінусове число")
+    if (w > 90 || h > 150) return alert("Можна вписати число не більше 90х150")
 
     const wiDth = (w / 90) * 50
     const heiGht = (h / 150) * 95
