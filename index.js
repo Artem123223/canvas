@@ -31,6 +31,7 @@ const oneButton = document.getElementById("btn1"),
       nice = document.getElementById("nice")
 
 const colorButton = [oneButton, twoButton, threeButton, fourButton]
+const reg300 = /^(?:300|[12]?\d{1,2})$/;
 
 let optionPrice = 0,
     fullPrice = 0,
@@ -41,17 +42,21 @@ function plusPrice() {
 }
 
 oneInput.addEventListener("input", () => {
+    if (oneInput.value === "") return
+    if (!reg300.test(oneInput.value)) oneInput.value = "300";
     colorButton.forEach(b => b.classList.remove("chushpan"))
 })
 twoInput.addEventListener("input", () => {
+    if (oneInput.value === "") return
+    if (!reg300.test(twoInput.value)) twoInput.value = "300";
     colorButton.forEach(b => b.classList.remove("chushpan"))
 })
 
 oneButton.addEventListener("click", function() {
     oneInput.value = 30
     twoInput.value = 30
-    w = 30
-    h = 30
+    let w = 30
+    let h = 30
     picture.style.width = w + "%"
     picture.style.height = h + "%"
     colorButton.forEach(b => b.classList.remove("chushpan"))
@@ -63,8 +68,8 @@ oneButton.addEventListener("click", function() {
 twoButton.addEventListener("click", function() {
     oneInput.value = 30
     twoInput.value = 90
-    w = 30
-    h = 90
+    let w = 30
+    let h = 90
     picture.style.width = w + "%"
     picture.style.height = h + "%"
     colorButton.forEach(b => b.classList.remove("chushpan"))
@@ -76,8 +81,8 @@ twoButton.addEventListener("click", function() {
 threeButton.addEventListener("click", function() {
     oneInput.value = 90
     twoInput.value = 120
-    w = 90
-    h = 120
+    let w = 90
+    let h = 120
     const widTh = (w / 50) * 40
     const heigHt = (h / 50) * 31
     picture.style.width = widTh + "%"
@@ -91,10 +96,10 @@ threeButton.addEventListener("click", function() {
 fourButton.addEventListener("click", function() {
     oneInput.value = 90
     twoInput.value = 150
-    w = 90
-    h = 150
-    const widTh = (w / 50) * 40
-    const heigHt = (h / 50) * 31
+    let w = 90
+    let h = 150
+    const widTh = (w / 50) * 38
+    const heigHt = (h / 50) * 29
     picture.style.width = widTh + "%"
     picture.style.height = heigHt + "%"
     colorButton.forEach(b => b.classList.remove("chushpan"))
@@ -109,28 +114,32 @@ fullInput.addEventListener("click", function() {
 
     if (!w || !h) return alert("Введи ширину і висоту")
     if (w < 0 || h < 0) return alert("Впишіть не мінусове число")
-    if (w > 90 || h > 150) return alert("Можна вписати число не більше 90х150")
+    if (w > 300 || h > 300) return alert("Можна вписати число не більше 300х300")
 
     let wiDth, heiGht
 
     console.log(h)
 
-    if(w > 30 || h > 91) {
-        wiDth = (w / 50) * 40
-        heiGht = (h / 50) * 31
+    if (w >= 200 || h >= 200) {
+        wiDth = (w / 100) * 28
+        heiGht = (h / 150) * 40 
+    } else if(w >= 150 || h >= 150) {
+        wiDth = (w / 50) * 24
+        heiGht = (h / 50) * 22
+    } else if (w > 30 || h > 91) {
+        wiDth = (w / 50) * 38
+        heiGht = (h / 50) * 29
     } else {
         wiDth = w
         heiGht = h
     }
 
-    console.log(heiGht)
-
-    // const wiDth = (w / 50) * 40
-    // const heiGht = (h / 50) * 31
+    console.log(wiDth, heiGht)
 
     picture.style.width = wiDth + "%"
     picture.style.height = heiGht + "%"
 
+    fullPrice = Math.round((w * h) / 10)
     plusPrice()
 })
 
