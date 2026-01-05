@@ -65,10 +65,8 @@ twoButton.addEventListener("click", function() {
     twoInput.value = 90
     w = 30
     h = 90
-    const widTh = (w / 50) * 50
-    const heigHt = (h / 50) * 30
-    picture.style.width = widTh + "%"
-    picture.style.height = heigHt + "%"
+    picture.style.width = w + "%"
+    picture.style.height = h + "%"
     colorButton.forEach(b => b.classList.remove("chushpan"))
     twoButton.classList.add("chushpan")
     fullPrice = 150
@@ -113,8 +111,22 @@ fullInput.addEventListener("click", function() {
     if (w < 0 || h < 0) return alert("Впишіть не мінусове число")
     if (w > 90 || h > 150) return alert("Можна вписати число не більше 90х150")
 
-    const wiDth = (w / 90) * 50
-    const heiGht = (h / 150) * 95
+    let wiDth, heiGht
+
+    console.log(h)
+
+    if(w > 30 || h > 91) {
+        wiDth = (w / 50) * 40
+        heiGht = (h / 50) * 31
+    } else {
+        wiDth = w
+        heiGht = h
+    }
+
+    console.log(heiGht)
+
+    // const wiDth = (w / 50) * 40
+    // const heiGht = (h / 50) * 31
 
     picture.style.width = wiDth + "%"
     picture.style.height = heiGht + "%"
